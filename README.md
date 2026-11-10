@@ -1,3 +1,4 @@
+https://ludow9.github.io/jeu-ia/
 # Pluie de Néon - jeu modèle
 
 Jeu d'arcade web en HTML, CSS et JavaScript pour le cours Outils IA, Bachelor 1, Ynov. Ce dépôt est la base de départ des défis GitHub Copilot : le jeu fonctionne déjà, à toi de l'améliorer.
