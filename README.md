@@ -1,18 +1,20 @@
 https://ludow9.github.io/jeu-ia/
-# Pluie de Néon - jeu modèle
+# Fat Cat - jeu modèle
 
 Jeu d'arcade web en HTML, CSS et JavaScript pour le cours Outils IA, Bachelor 1, Ynov. Ce dépôt est la base de départ des défis GitHub Copilot : le jeu fonctionne déjà, à toi de l'améliorer.
 
 ## Le but
 
-Déplace le rail néon en bas de l'écran et attrape les cristaux qui tombent. Évite les bombes. Enchaîne les prises pour faire monter le multiplicateur.
+Déplace le chat en bas de l'écran et attrape la nourriture qui tombe. Évite les chiens. Enchaîne les prises pour faire monter le multiplicateur.
 
-- Cristal cyan : 10 points.
-- Cristal doré, plus rare : 50 points.
-- Bombe : tu perds une vie et ton combo retombe à zéro.
+- Croquettes : 10 points.
+- Lait, plus rare : 50 points.
+- Chien : tu perds une vie et ton combo retombe à zéro.
+- Collier : permet d'ignorer les dégâts d'un chien
+- Glaçon : ralenti les objets tombant 
 - Trois vies au départ.
-- Le combo reste actif 3 secondes. À partir de 3 cristaux, le multiplicateur passe à x2, puis x3, x4 et x5.
-- Toutes les 18 secondes, le niveau augmente : les objets tombent plus vite, arrivent plus souvent et les bombes se multiplient.
+- Le combo reste actif 3 secondes. À partir de 3 nourritures, le multiplicateur passe à x2, puis x3, x4 et x5.
+- Toutes les 18 secondes, le niveau augmente : les objets tombent plus vite, arrivent plus souvent et les chiens se multiplient.
 - Le meilleur score est conservé dans le navigateur avec `localStorage`.
 
 ## Lancer le jeu
