@@ -1,4 +1,4 @@
-// Réglages de Pluie de Néon.
+// Réglages de Croquette Cat.
 // Modifie ces valeurs pour équilibrer le jeu sans toucher au reste du code.
 
 const LARGEUR = 480; // largeur logique du canvas
@@ -9,16 +9,18 @@ const CRISTAL = "cristal";
 const GLACE = "glace";
 const BOMBE = "bombe";
 const DORE = "dore";
+const BOUCLIER = "bouclier";
 
 const COULEURS = {
-  fond: "#05030f",
-  cyan: "#28f0ff",
+  fond: "#211b27",
+  cyan: "#e7a84b",
   glace: "#9be7ff",
-  magenta: "#ff3ea5",
-  or: "#ffd166",
-  rouge: "#ff4d6d",
-  blanc: "#f5f7ff",
-  grille: "rgba(40, 240, 255, 0.16)"
+  magenta: "#d98a5f",
+  or: "#f4d06f",
+  rouge: "#d95763",
+  bouclier: "#b86bff",
+  blanc: "#fff8e8",
+  grille: "rgba(255, 248, 232, 0.12)"
 };
 
 const REGLAGES = {
@@ -34,6 +36,7 @@ const REGLAGES = {
   hasardBombe: 0.14,
   hasardDore: 0.05,
   hasardGlace: 0.02,
+  hasardBouclier: 0.03,
   ralentissementGlace: 0.5,
   dureeGlace: 4,
   largeurPanier: 96,

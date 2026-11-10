@@ -63,6 +63,10 @@ function sonGlace() {
   note(760, 0.16, "sine", 0.15, 180);
   note(1140, 0.2, "triangle", 0.1, 120);
 }
+function sonBouclier() {
+  note(420, 0.18, "sine", 0.15, 260);
+  note(840, 0.24, "triangle", 0.1, 180);
+}
 function sonBombe() {
   note(120, 0.35, "sawtooth", 0.4, -90);
   note(70, 0.45, "square", 0.25, -30);

@@ -1,4 +1,4 @@
-// Logique de Pluie de Néon : état, entrées, règles et boucle du jeu.
+// Logique de Croquette Cat : état, entrées, règles et boucle du jeu.
 // Les éléments de la page.
 const canvas = document.getElementById("jeu");
 const ctx = canvas.getContext("2d");
@@ -29,6 +29,7 @@ let tempsJeu = 0;
 let combo = 0;
 let chronoCombo = 0;
 let chronoGlace = 0;
+let bouclier = false;
 let objets = [];
 let chronoSpawn = 0;
 let dernierTemps = 0;
@@ -49,6 +50,7 @@ function majHud() {
   elementNiveau.textContent = "NIVEAU " + niveau;
   elementComboValeur.textContent = "x" + multiplicateur();
   elementCombo.classList.toggle("fort", multiplicateur() > 1);
+  panier.bouclier = bouclier;
   for (let i = 0; i < elementVies.length; i++) {
     elementVies[i].classList.toggle("perdue", i >= vies);
   }
@@ -60,7 +62,7 @@ function demarrerPartie() {
   etat = "jeu";
   score = 0; vies = REGLAGES.viesDepart; niveau = 1; tempsJeu = 0;
   cristaux = 0;
-  combo = 0; chronoCombo = 0; chronoGlace = 0; objets = []; chronoSpawn = 0.45;
+  combo = 0; chronoCombo = 0; chronoGlace = 0; bouclier = false; objets = []; chronoSpawn = 0.45;
   panier.x = LARGEUR / 2 - panier.largeur / 2; panier.cibleX = null; panier.vitesse = 0;
   ecranTitre.classList.add("cache");
   ecranFin.classList.add("cache");
@@ -77,7 +79,7 @@ function terminerPartie() {
   flasher(COULEURS.blanc, 0.4);
   finScore.textContent = score;  
   //afficher le nombre de cristaux attrapés sur l'écran de fin dans finScore
-  finScore.textContent += " (Cristaux: " + cristaux + ")";
+  finScore.textContent += " (Croquettes: " + cristaux + ")";
   finRecord.textContent = record;
   badgeRecord.classList.toggle("cache", !nouveauRecord);
   scene.dataset.etat = "fin";
@@ -91,7 +93,8 @@ function creerObjet() {
   if (tirage < Math.min(0.42, REGLAGES.hasardBombe + (niveau - 1) * 0.03)) type = BOMBE;
   else if (tirage > 1 - REGLAGES.hasardDore) type = DORE;
   else if (tirage > 1 - REGLAGES.hasardDore - REGLAGES.hasardGlace) type = GLACE;
-  const rayon = type === DORE ? 17 : type === BOMBE ? 15 : type === GLACE ? 14 : 13;
+  else if (tirage > 1 - REGLAGES.hasardDore - REGLAGES.hasardGlace - REGLAGES.hasardBouclier) type = BOUCLIER;
+  const rayon = type === DORE ? 17 : type === BOMBE ? 15 : type === GLACE ? 14 : type === BOUCLIER ? 15 : 13;
   const vitesse = Math.min(REGLAGES.vitesseChuteMax, REGLAGES.vitesseChute + (niveau - 1) * 28);
   objets.push({
     type: type, x: hasard(rayon + 12, LARGEUR - rayon - 12), y: -rayon - 8, rayon: rayon,
@@ -120,7 +123,25 @@ function estAttrape(objet) {
 function toucherObjet(objet) {
   if (objet.type === BOMBE) {
     creerParticules(objet.x, objet.y, COULEURS.magenta, 28, 320);
+    if (bouclier) {
+      bouclier = false;
+      creerParticules(objet.x, objet.y, COULEURS.bouclier, 30, 300);
+      ajouterTexte(objet.x, objet.y - 10, "BOUCLIER ACTIVÉ", COULEURS.bouclier);
+      sonBombe();
+      flasher(COULEURS.bouclier, 0.18);
+      secouer(4);
+      return;
+    }
     perdreVie(objet.x, objet.y, true);
+    return;
+  }
+  if (objet.type === BOUCLIER) {
+    bouclier = true;
+    creerParticules(objet.x, objet.y, COULEURS.bouclier, 24, 280);
+    ajouterTexte(objet.x, objet.y - 10, "BOUCLIER", COULEURS.bouclier);
+    sonBouclier();
+    flasher(COULEURS.bouclier, 0.14);
+    secouer(3);
     return;
   }
   if (objet.type === GLACE) chronoGlace = REGLAGES.dureeGlace;
@@ -130,7 +151,7 @@ function toucherObjet(objet) {
   const points = (objet.type === DORE ? 50 : 10) * multi;
   const couleur = objet.type === DORE ? COULEURS.or : objet.type === GLACE ? COULEURS.glace : COULEURS.cyan;
   score += points;
-  // compte les cristaux attrapés dans la variable cristaux
+  // compte les croquettes attrapées dans la variable cristaux
   if (objet.type === CRISTAL) {
     cristaux += 1;
   }
@@ -191,7 +212,7 @@ function mettreAJour(dt) {
     } else if (objet.y - objet.rayon > HAUTEUR + 20) {
       objets.splice(i, 1);
       if (objet.type === CRISTAL) perdreVie(objet.x, HAUTEUR - 30, false);
-      else if (objet.type === DORE) ajouterTexte(objet.x, HAUTEUR - 40, "CRISTAL DORÉ PERDU", COULEURS.or);
+      else if (objet.type === DORE) ajouterTexte(objet.x, HAUTEUR - 40, "BRIQUE DE LAIT PERDUE", COULEURS.or);
     }
   }
   majHud();
