@@ -11,24 +11,30 @@ Règle : tu colles ici le texte exact de tes prompts (copier-coller, pas de capt
 - Commentaire ou début de code que j'ai écrit :
 
 ```
-(colle-le ici)
+// compte les cristaux attrapés dans la variable cristaux
 ```
 
-- Ce que Copilot a proposé :
-- Ce que j'ai accepté, modifié ou refusé, et pourquoi :
-- Comment j'ai vérifié que ça marche :
+- Ce que Copilot a proposé : if (objet.type === CRISTAL) {
+    cristaux += 1;
+  }
+- Ce que j'ai accepté, modifié ou refusé, et pourquoi : if (objet.type === CRISTAL) {
+    cristaux += 1;
+  }
+  en ajoutant la variable "cristaux"
+- Comment j'ai vérifié que ça marche : En testant : le jeu a arrêté de crash
 
 ## Défi 2 - Ask
 
 - Ma question (prompt exact) :
 
 ```
-(colle-le ici)
+comment le combo est-il remis
+à zéro ?
 ```
 
-- Une affirmation de la réponse que j'ai vérifiée :
-- Comment je l'ai vérifiée (un changement dans le code, un test dans le jeu) :
-- Résultat : exacte, fausse ou incomplète :
+- Une affirmation de la réponse que j'ai vérifiée : Quand le joueur perd une vie : la fonction perdreVie() exécute directement combo = 0
+- Comment je l'ai vérifiée (un changement dans le code, un test dans le jeu) : un test dans le jeu
+- Résultat : exacte, fausse ou incomplète : exacte
 
 ## Défi 3 - Plan
 
