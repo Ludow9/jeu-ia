@@ -21,6 +21,7 @@ const badgeRecord = document.getElementById("badge-record");
 // L'état de la partie.
 let etat = "titre";
 let score = 0;
+let cristaux = 0;
 let record = 0;
 let vies = REGLAGES.viesDepart;
 let niveau = 1;
@@ -57,6 +58,7 @@ function demarrerPartie() {
   preparerAudio();
   etat = "jeu";
   score = 0; vies = REGLAGES.viesDepart; niveau = 1; tempsJeu = 0;
+  cristaux = 0;
   combo = 0; chronoCombo = 0; objets = []; chronoSpawn = 0.45;
   panier.x = LARGEUR / 2 - panier.largeur / 2; panier.cibleX = null; panier.vitesse = 0;
   ecranTitre.classList.add("cache");
@@ -72,7 +74,9 @@ function terminerPartie() {
   creerParticules(panier.x + panier.largeur / 2, panier.y, COULEURS.cyan, 26, 280);
   secouer(20);
   flasher(COULEURS.blanc, 0.4);
-  finScore.textContent = score;
+  finScore.textContent = score;  
+  //afficher le nombre de cristaux attrapés sur l'écran de fin dans finScore
+  finScore.textContent += " (Cristaux: " + cristaux + ")";
   finRecord.textContent = record;
   badgeRecord.classList.toggle("cache", !nouveauRecord);
   scene.dataset.etat = "fin";
@@ -123,6 +127,10 @@ function toucherObjet(objet) {
   const points = (objet.type === DORE ? 50 : 10) * multi;
   const couleur = objet.type === DORE ? COULEURS.or : COULEURS.cyan;
   score += points;
+  // compte les cristaux attrapés dans la variable cristaux
+  if (objet.type === CRISTAL) {
+    cristaux += 1;
+  }
   creerParticules(objet.x, objet.y, couleur, objet.type === DORE ? 24 : 14, 280);
   ajouterTexte(objet.x, objet.y - 10, "+" + points, couleur);
   if (objet.type === DORE) { sonDore(); flasher(COULEURS.or, 0.18); }
