@@ -59,8 +59,16 @@ Applique PLAN.md.
 
 - Fichiers que l'agent a modifiés : config.js, jeu.js, dessin.js, audio.js
 - Ce que j'ai relu dans les changements avant d'accepter : J'ai vérifié qu'il ait bien suivi le plan (comme par exemple appliquer un ralentissement lorsque l'on récupère un cristal de glace)
-- Ce que j'ai refusé, corrigé ou fait refaire : j'ai fait refaire le graphique du cristal de glace car il avait le même skin que les crisstaux de base.
+- Ce que j'ai refusé, corrigé ou fait refaire : j'ai fait refaire le graphique du cristal de glace car il avait le même skin que les cristaux de base.
 - Mon jeu après l'agent (une phrase) : mon jeu a maintenant un nouveau type de cristal, plus rare que les dorés.
+
+- Mon deuxième prompt en mode Agent : 
+
+```
+ajoute un bouclier à mon jeu afin que lorsque le joueur en récupère un, il absorbe la bombe et en est protégé (ne perd pas de vie). mon jeu est actuellement un jeu où le joueur est une plateforme et où l'on doit récupérer des cristaux. Conserve tout ce qui est fait dans les fichiers en rajoutant un type de cristal bouclier qui ne fait que donner un bouclier au joueur. créé celà dans les fichier .js présents dans le projet.
+```
+- Fichiers que l'agent a modifiés : config.js, jeu.js, dessin.js, audio.js
+- Ce que j'ai refusé, corrigé ou fait refaire : J'ai d'abord fait corriger le sens du bouclier (qui était trouné vers le bas) afin qu'il protège réellement le joueur, puis j'ai modifié les dessins des éléments (le panier devient un chat, les cristaux des croquettes, les cristaux de glace des glaçons, le bouclier un colier et les bombes un chien), j'ai également fait en sorte que le colier soit un colier même lorsqu'il était en train de tombé, chose que l'agent n'avait pas fait au début.
 
 ## Défi 5 - Pull request et revue
 

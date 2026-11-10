@@ -1,13 +1,13 @@
-/* Pluie de Néon : page, écrans et interface. */
+/* Fat Cat : page, écrans et interface. */
 
 :root {
-  --fond: #05030f;
-  --cyan: #28f0ff;
-  --magenta: #ff3ea5;
-  --or: #ffd166;
-  --rouge: #ff4d6d;
-  --blanc: #f5f7ff;
-  --gris: #8b87a8;
+  --fond: #211b27;
+  --cyan: #e7a84b;
+  --magenta: #d98a5f;
+  --or: #f4d06f;
+  --rouge: #d95763;
+  --blanc: #fff8e8;
+  --gris: #b7a9a0;
   --police: "Avenir Next", "Segoe UI", system-ui, -apple-system, sans-serif;
   --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   --taille-scene: min(92vw, 432px, 54vh);
@@ -32,8 +32,8 @@ body {
   color: var(--blanc);
   font-family: var(--police);
   background:
-    radial-gradient(circle at 18% 0%, rgba(122, 92, 255, 0.2), transparent 42%),
-    radial-gradient(circle at 82% 100%, rgba(255, 62, 165, 0.14), transparent 46%),
+    radial-gradient(circle at 18% 0%, rgba(244, 208, 111, 0.2), transparent 42%),
+    radial-gradient(circle at 82% 100%, rgba(217, 138, 95, 0.14), transparent 46%),
     var(--fond);
 }
 
