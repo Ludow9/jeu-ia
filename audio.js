@@ -59,6 +59,10 @@ function sonCristal(multiplicateur) {
 function sonDore() {
   sonSuite([660, 880, 1170, 1560], 0.12, "triangle", 0.16);
 }
+function sonGlace() {
+  note(760, 0.16, "sine", 0.15, 180);
+  note(1140, 0.2, "triangle", 0.1, 120);
+}
 function sonBombe() {
   note(120, 0.35, "sawtooth", 0.4, -90);
   note(70, 0.45, "square", 0.25, -30);

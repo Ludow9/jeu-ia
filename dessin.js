@@ -83,7 +83,8 @@ function dessinerPanier(ctx, panier, temps) {
 function dessinerCristal(ctx, objet, temps) {
   const r = objet.rayon;
   const dore = objet.type === DORE;
-  const couleur = dore ? COULEURS.or : COULEURS.cyan;
+  const glace = objet.type === GLACE;
+  const couleur = dore ? COULEURS.or : glace ? COULEURS.glace : COULEURS.cyan;
   const battement = 1 + 0.06 * Math.sin(temps * 5 + objet.pulsation);
   ctx.rotate(objet.rotation);
   ctx.scale(battement, battement);
@@ -95,7 +96,7 @@ function dessinerCristal(ctx, objet, temps) {
   ctx.lineTo(0, r);
   ctx.lineTo(-r * 0.62, 0);
   ctx.closePath();
-  ctx.fillStyle = dore ? "rgba(255, 209, 102, 0.22)" : "rgba(40, 240, 255, 0.2)";
+  ctx.fillStyle = dore ? "rgba(255, 209, 102, 0.22)" : glace ? "rgba(155, 231, 255, 0.28)" : "rgba(40, 240, 255, 0.2)";
   ctx.fill();
   ctx.strokeStyle = couleur;
   ctx.lineWidth = 2;
@@ -104,6 +105,17 @@ function dessinerCristal(ctx, objet, temps) {
   ctx.beginPath();
   ctx.arc(0, 0, r * 0.28, 0, Math.PI * 2);
   ctx.fill();
+  if (glace) {
+    ctx.strokeStyle = COULEURS.blanc;
+    ctx.lineWidth = 1.5;
+    for (let i = 0; i < 3; i++) {
+      const angle = i * Math.PI / 3;
+      ctx.beginPath();
+      ctx.moveTo(Math.cos(angle) * r * 0.72, Math.sin(angle) * r * 0.72);
+      ctx.lineTo(-Math.cos(angle) * r * 0.72, -Math.sin(angle) * r * 0.72);
+      ctx.stroke();
+    }
+  }
 }
 function dessinerBombe(ctx, objet, temps) {
   const r = objet.rayon * (1 + 0.09 * Math.sin(temps * 9 + objet.pulsation));

@@ -54,13 +54,13 @@ objets ralentissent pendant 4 secondes, puis reprennent leur vitesse. Respecte l
 - Mon prompt en mode Agent :
 
 ```
-(colle-le ici)
+Applique PLAN.md.
 ```
 
-- Fichiers que l'agent a modifiés :
-- Ce que j'ai relu dans les changements avant d'accepter :
-- Ce que j'ai refusé, corrigé ou fait refaire :
-- Mon jeu après l'agent (une phrase) :
+- Fichiers que l'agent a modifiés : config.js, jeu.js, dessin.js, audio.js
+- Ce que j'ai relu dans les changements avant d'accepter : J'ai vérifié qu'il ait bien suivi le plan (comme par exemple appliquer un ralentissement lorsque l'on récupère un cristal de glace)
+- Ce que j'ai refusé, corrigé ou fait refaire : j'ai fait refaire le graphique du cristal de glace car il avait le même skin que les crisstaux de base.
+- Mon jeu après l'agent (une phrase) : mon jeu a maintenant un nouveau type de cristal, plus rare que les dorés.
 
 ## Défi 5 - Pull request et revue
 
