@@ -72,10 +72,10 @@ ajoute un bouclier à mon jeu afin que lorsque le joueur en récupère un, il ab
 
 ## Défi 5 - Pull request et revue
 
-- Lien de ma pull request :
-- Commentaire de la revue Copilot que j'ai traité (le texte) :
+- Lien de ma pull request : 
+- Commentaire de la revue Copilot que j'ai traité (le texte) : (je n'ai pas pu avoir de revue de Copilot)
 - Ma décision (corrigé ou refusé) et pourquoi :
-- Lien de mon jeu publié :
+- Lien de mon jeu publié : https://ludow9.github.io/jeu-ia/
 
 ## Bilan (3 lignes maximum)
 
